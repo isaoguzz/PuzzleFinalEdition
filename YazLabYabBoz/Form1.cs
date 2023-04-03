@@ -236,6 +236,36 @@ namespace YazLabYabBoz
             }
         }
 
+        void resizedImage()
+        {
+            Console.WriteLine("Called: resizedImage()");
+            resize = (System.Drawing.Image)(new Bitmap(newXAxis, newYAxis));
+            var graphics = Graphics.FromImage(resize);
+            graphics.DrawImage(mainPicture, new Rectangle(0, 0, newXAxis, newYAxis), new Rectangle(0, 0, xAxis, yAxis), GraphicsUnit.Pixel);
+            graphics.Dispose();
+            Console.WriteLine("wrong");
+            //pictureBox1.Image = mainPicture;
+        }
+
+        void setButtonPositionandDimensions()
+        {
+            Console.WriteLine("Called: setButtonPositionandDimensions()");
+            for (int i = 0; i < buttons.Count(); i++)
+            {
+                buttons[i].Width = BoxX;
+                buttons[i].Height = BoxY;
+
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    buttons[i * 4 + j].Location = new Point(buttonStartListX + j * BoxX, buttonStartListY + i * BoxY);
+
+                }
+            }
+        }
+
         bool rightPlaceMethod(Control button)
         {
             var parca_resim_indexi = satir_bul(button) * 4 + sutun_bul(button);
