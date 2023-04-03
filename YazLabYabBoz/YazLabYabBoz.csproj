@@ -163,10 +163,12 @@
     <Content Include="img\dog.jpg" />
     <Content Include="img\image.gif" />
     <Content Include="kaynakKod.txt" />
-    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
     <Content Include="obj\Debug\YazLabYabBoz.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\YazLabYabBoz.exe" />
     <Content Include="obj\Debug\YazLabYabBoz.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

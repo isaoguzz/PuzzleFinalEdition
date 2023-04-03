@@ -265,6 +265,40 @@ namespace YazLabYabBoz
                 }
             }
         }
+        void setBestScore()
+        {
+            var list = System.IO.File.ReadLines(scoreFileAddress.ToString()).Select(line => double.Parse(line.Trim())).ToList();
+            foreach (var item in list)
+            {
+                if (item > bestScore)
+                {
+                    bestScore = item;
+                }
+            }
+            skor_label.Text = bestScore.ToString();
+        }
+
+
+        void setPlayers()
+        {
+            var list = System.IO.File.ReadLines(playerAddress.ToString()).Select(line => Convert.ToString(line.Trim()));
+        }
+
+        void setButtonList()
+        {
+
+            for (int x = 1; x <= 16; x++)
+            {
+                var buttonName = string.Format("button{0}", x);
+                var button = Controls.Find(buttonName, true).First();
+
+                if (button != null)
+                {
+                    buttons.Add(button);
+                }
+            }
+        }
+
 
         bool rightPlaceMethod(Control button)
         {
