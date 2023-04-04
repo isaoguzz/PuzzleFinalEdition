@@ -29,7 +29,7 @@ namespace YazLabYabBoz
         public static System.Drawing.Image[] imageList = new System.Drawing.Image[16]; //tanım:image dizisi
 
 
-        public static System.Drawing.Image mainPicture = System.Drawing.Image.FromFile("C:\\Users\\user\\Desktop\\YazLabYabBoz\\YazLabYabBoz\\YazLabYabBoz\\img\\dog.jpg"); //orjinal resim boyutu
+        public static System.Drawing.Image mainPicture = System.Drawing.Image.FromFile("C:\\Users\\isa34\\Desktop\\img\\kopek.jpg"); //orjinal resim boyutu
 
 
         public static int xAxis = mainPicture.Width;
