@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,6 +83,51 @@ namespace YazLabYabBoz
 
         private void Login_Load(object sender, EventArgs e)
         {
+            string fileName = "enYuksekSkor.txt";
+
+            // Metin belgesi oluşturulacak klasörün yolu.
+            string folderPath = @"C:\Users\isa34\Desktop\project\YazLabYabBoz\bin\Debug";
+
+            // Tam dosya yolu.
+            string fullPath = Path.Combine(folderPath, fileName);
+
+
+            if (!File.Exists(fullPath))
+            {
+                // Boş dosya oluşturulur.
+                using (FileStream fs = File.Create(fullPath))
+                {
+                }
+            }
+
+            string players = "players.txt";
+
+            // Metin belgesi oluşturulacak klasörün yolu.
+            string folderPathplayers = @"C:\Users\isa34\Desktop\project\YazLabYabBoz\bin\Debug";
+
+            // Tam dosya yolu.
+            string fullPathplayers = Path.Combine(folderPathplayers, players);
+
+
+            if (!File.Exists(fullPathplayers))
+            {
+                // Boş dosya oluşturulur.
+                using (FileStream fs = File.Create(fullPathplayers))
+                {
+                }
+            }
+
+
+
+            string sourceDllPath = @"C:\Users\isa34\Desktop\project\YazLabYabBoz\Properties.Resources.Designer.cs.dll";
+            string targetFolderPath = @"C:\Users\isa34\Desktop\project\YazLabYabBoz\obj\Debug\";
+            string targetDllPath = Path.Combine(targetFolderPath, "Properties.Resources.Designer.cs.dll");
+
+            // Dosya kopyalama işlemi
+            if (!File.Exists(targetDllPath)) // Hedef klasörde DLL dosyası yoksa
+            {
+                File.Copy(sourceDllPath, targetDllPath);
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)

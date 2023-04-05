@@ -444,6 +444,12 @@ namespace YazLabYabBoz
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            if (bestScore == -100)
+            {
+                skor_label.Text = "0";
+
+            }
             //button35.Visible= false;
             label6.Text = Login.userName;
 
