@@ -31,7 +31,8 @@ namespace YazLabYabBoz
 
         public static System.Drawing.Image mainPicture = System.Drawing.Image.FromFile("C:\\Users\\isa34\\Desktop\\img\\kopek.jpg"); //orjinal resim boyutu
 
-
+        private LinkedList<System.Windows.Forms.Button> puzzleButtons;
+        private LinkedList<Image> puzzleImages;
         public static int xAxis = mainPicture.Width;
         public static int yAxis = mainPicture.Height;
        
