@@ -1,1 +1,496 @@
-deneme
+Github Adresi = https://github.com/isaoguzz/PuzzleFinalEdition
+
+
+201307026-İsa Oğuz  || 201307046- Mehmet Yusuf Alpay  || 201307021 - Yunus Emre Dal
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Net.WebRequestMethods;
+
+
+namespace YabBoz
+{
+  public partial class Form : Form
+{
+
+      SqlConnection connection = new SqlConnection(@"Server=tcp:isaoguz.database.windows.net,1433;Initial Catalog=puzzleGame;Persist Security Info=False;User ID=isaoguz;Password=Yaz,Lab133;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+
+
+        public static String imageUrl = null;
+        bool wrong = false;
+        double bestScore = -100.0;
+        double score = 0.0;
+        double Move = 0.0;
+    	  label2.Text = "";
+        label4.Text = "";
+
+        public static List<Control> buttons = new List<Control>();
+        public static List<Control> controlButtons = new List<Control>();
+ 	  public static string scoreFileAddress = "enyuksekskor.txt";
+        public static string playerAddress = "players.txt";
+        private LinkedList<System.Windows.Forms.Button> puzzleButtons;
+        private LinkedList<Image> puzzleImages;
+
+	  //Resmi karıştırarak doğru olan parçalar ait oldukları yerlere setlenirse karıştır butonunu dokunulmaz hale getirmektedir. Eğer doğru parça setlenmez ise 	tekrar resim seçme hakkı tanımaktadır. 
+
+        private void btnMix(object sender, EventArgs e)  //Resmi karıştır butonu
+        {
+            resizedImage();
+            if (ImageAddress == null)
+            {
+                MessageBox.Show("Resim Seç");
+                return;
+            }
+	  }
+
+  	 //Oyuncuyu setle.
+
+       void setPlayers()
+        {
+            var newList = System.IO.File.Read(playerAddress.ToString()).Select(line => Convert.ToString(line.Trim()));
+        }
+
+
+        void bestScoreSet()
+        {
+            var bestScoreList = System.IO.File.ReadLines(score.Select(line => double.Parse(line.Trim())).ToList();
+            foreach (var items in bestScoreList)
+            {
+                if (items > bestScoreList)
+                {
+                    enIyıScor = items;
+                }
+            }
+            skorMetni.Text = score.ToString();
+        }
+
+
+ 	//Linkedlist 'e parçlararın setlenmesi ve doğru parçasnın bulunması.
+        bool isRightPlace(Button buton, System.Drawing.Image image)
+        {
+		Bitmap bitmepOne = image;
+            Bitmap bitmepTwo = buton.Image;
+            LinkedList<bool> sonuclar = new LinkedList<bool>();
+          
+            for (int x = 2; x < image; x++)
+            {
+                for (int y = 10; y < image; y--)
+                {
+                     OnePix = bitmepOne.GetPixel();
+                     TwoPix = bitmepTwo.GetPixel();
+                    if ()
+                    {
+                        sonuclar.AddLast(true);
+                    }
+                    else
+                    {
+                        sonuclar.AddLast(false);
+                    }
+                }
+            }
+
+             yeniSonuclar = sonuclar.Distinct();
+
+            if (yeniSonuclar ==0 && yeniSonuclar == 4)
+            {
+                return true;
+            }
+            else
+            {
+         
+                return null;
+            }
+        }
+
+        //Image boyutunu ayarla.
+
+         resizedImage()
+        {
+            boyut = (new Bitmap(newXAxis, newYAxis));
+            var grafik = FromImage(resize);
+            grafik.DrawImage(anaResim, yeniResim(newXAxis, newYAxis), YeniResim(xAxis, yAxis));
+            pictureBox1.Image = anaResim;
+        }
+
+        PointAdd()
+        {
+            yeniSkor = yeniSkor + 5;
+            Move = Move + 1;
+           
+        }
+
+        PointDelete()
+        {
+           
+            yeniSkor = yeniSkor - 10;
+            Move = Move + 1;
+            
+        }
+		 //Doğru yerdemi kontrolü sağla.
+            var result = rightPlaceMethod(button);
+            var resutltwo = address(button) * 5 + address(button) + 2;
+            if (resutltwo)
+            {
+                butonu_sabitle(evsahibi_buton);
+                puan_ekle();
+            }
+            else
+            {
+                // puan_kir();
+            }
+
+
+    oyunBittimi()
+        {
+            bool sonuc = true;
+            foreach (var dugum in dugumler)
+            {
+                if (dugum.Drop == true)
+                {
+                    yeniSonuc = false;
+                }
+            }
+           
+        }
+
+
+ private void Form_Load(object sender, EventArgs e)
+        {
+
+              SqlConnection connection = new SqlConnection(@"Server=tcp:isaoguz.database.windows.net,1433;Initial Catalog=puzzleGame;Persist Security Info=False;User ID=isaoguz;Password=Yaz,Lab133;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            //button35.Visible= false;
+            label6.Text = Login.userName;
+
+            connection.Open();
+            string sqlList = "Select pu.userName, ps.userMove, ps.userScore from puzzleGameUsers as pu JOIN puzzleGameScores as ps ON pu.userId = ps.userId  ";
+            SqlCommand command1 = new SqlCommand(sqlList, connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command1);
+            DataTable data = new DataTable();
+            sqlDataAdapter.Fill(data);
+            dataGridView1.DataSource = data;
+            connection.Close();
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Columns[0].Width = 100;
+            dataGridView1.Columns[1].Width = 60;
+            dataGridView1.Columns[2].Width = 120;
+            dataGridView1.Columns[0].HeaderText = "Player Name";
+            dataGridView1.Columns[1].HeaderText = "Move";
+            dataGridView1.Columns[2].HeaderText = "Score";
+        }
+
+   private void button34_Click(object sender, EventArgs e)
+        {
+            PuzzleImage puzzleImage = new PuzzleImage();
+
+            puzzleImage.Show();
+
+            //pictureBox3.Image = Image.FromFile(this.imageUrl);
+
+        }
+
+
+ 	button33_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "Resim Dosyaları| *.jpg;*.jpeg;*.png"; //İzin verilen resim formatları
+
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                imageUrl = file.FileName;
+            }
+     
+        }
+
+	 int satirKontrolu(Button button)
+        {
+            var satir = (button.xAxis - yAxis) / yAxis;
+            return satir;
+        }
+
+        int SutunKontrolu(Button butto)
+        {
+            var sutun = (button.xAxis - yAxis) / yAxis;
+            return sutun;
+        }
+
+  	private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        void skorLabelUpdateAndWriteFileFinish()
+        {
+            label4.Text = score.ToString();
+            if (score > bestScore)
+            {
+               score.Text = score.ToString();
+            }
+            if (oyunBittimi())
+            {
+                
+                finish.Text = "Oyun Bitti!";
+                scoreFile = new FileStream(scoreFileAddress, FileAccess.Write);
+                StreamWriter dosya = new StreamWriter(scoreFile);
+                dosya.WriteLine(scoreFile.ToString());
+                dosya.Close();
+
+			string sql = "Insert into puzzleGameScores(userId,userScore,userMove) values(@userId,@userScore,@userMove)";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    SqlParameter parameter1 = new SqlParameter("userScore", score.ToString().Trim());
+                    SqlParameter parameter2 = new SqlParameter("userMove", Move.ToString().Trim());
+                    SqlParameter parameter5 = new SqlParameter("userId", userId);
+                    command.Parameters.Add(parameter5);
+                    command.Parameters.Add(parameter1);
+                    command.Parameters.Add(parameter2);
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    MessageBox.Show("User is saved ! ");	
+
+		}
+
+   private void button35_Click(object sender, EventArgs e)
+        {
+
+            this.Close();
+            Login login= new Login();
+            this.Update();
+            this.Refresh();
+            login.Show();
+
+        }
+
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace YabBoz
+{
+    public partial class Login : Form
+    {
+  
+
+        SqlConnection connection = new SqlConnection(@"Server=tcp:isaoguz.database.windows.net,1433;Initial Catalog=puzzleGame;Persist Security Info=False;User ID=isaoguz;Password=Yaz,Lab133;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+
+        public static string userName;
+        public static string password;
+   
+        public Login()
+        {
+            InitializeComponent();
+            userName = textBox1.Text.Trim();
+            password = textBox3.Text.Trim();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            userName= textBox1.Text.Trim(); 
+            password= textBox3.Text.Trim();
+            try
+            {
+             connection.Open();
+                string sql = "Select * from puzzleGameUsers where userName=@userName AND userPassword=@userPassword";
+                SqlParameter parameter1 = new SqlParameter("userName", userName);
+                SqlParameter parameter2 = new SqlParameter("userPassword", password);
+                SqlCommand command = new SqlCommand(sql,connection);
+                command.Parameters.Add(parameter1);
+                command.Parameters.Add(parameter2);
+                DataTable data = new DataTable();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command);
+                sqlDataAdapter.Fill(data);
+
+                if (data.Rows.Count>0)
+                {
+                    Form1 form1 = new Form1();
+                    form1.Show();
+                    connection.Close();
+                    this.Hide();
+                }
+
+                }
+               
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Hatalı Kullanıcı Adı veya Şifre...");
+            }
+         
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            string fileName = "enYuksekSkor.txt";
+
+            // Metin belgesi oluşturulacak klasörün yolu.
+
+            string folderPath = @"C:\Users\isa34\Desktop\project\YabBoz\bin\Debug";
+
+            // Tam dosya yolu.
+
+            string fullPath = Path.Combine(folderPath, fileName);
+
+
+            if (!File.Exists(fullPath))
+            {
+                // Boş dosya oluşturulur.
+                using (FileStream fs = File.Create(fullPath))
+                {
+                }
+            }
+
+            string players = "players.txt";
+
+            // Metin belgesi oluşturulacak klasörün yolu.
+
+            string folderPathplayers = @"C:\Users\isa34\Desktop\project\YabBoz\bin\Debug";
+
+            // Tam dosya yolu.
+
+            string fullPathplayers = Path.Combine(folderPathplayers, players);
+
+
+            if (!File.Exists(fullPathplayers))
+            {
+                // Boş dosya oluşturulur.
+                using (FileStream fs = File.Create(fullPathplayers))
+                {
+
+                }
+
+            }
+
+
+            string sourceDllPath = @"C:\Users\isa34\Desktop\project\YabBoz\Properties.Resources.Designer.cs.dll";
+
+            string targetFolderPath = @"C:\Users\isa34\Desktop\project\YabBoz\obj\Debug\";
+
+            string targetDllPath = Path.Combine(targetFolderPath, "Properties.Resources.Designer.cs.dll");
+
+            // Dosya kopyalama işlemi
+            if (!File.Exists(targetDllPath)) // Hedef klasörde DLL dosyası yoksa
+            {
+                File.Copy(sourceDllPath, targetDllPath);
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            userName = textBox1.Text.Trim();
+            password = textBox3.Text.Trim();
+            try
+            {
+     			textBox1.Text = userName;
+			textBox3.Text = password;
+			score.Text = score;
+
+
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Hatalı Kullanıcı Adı veya Şifre...");
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace YabBoz
+{
+    public partial class ScoreTable : Form
+    {
+        public ScoreTable()
+        {
+            InitializeComponent();
+        }
+
+        private void ScoreTable_Load(object sender, EventArgs e)
+        {
+
+            SqlConnection connection = new SqlConnection(@"Server=tcp:isaoguz.database.windows.net,1433;Initial Catalog=puzzleGame;Persist Security Info=False;User ID=isaoguz;Password=Yaz,Lab133;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+
+            connection.Open();
+            string sqlList = "Select pu.userName, ps.userMove, ps.userScore from puzzleGameUsers as pu JOIN puzzleGameScores as ps ON pu.userId = ps.userId  ";
+            SqlCommand command1 = new SqlCommand(sqlList, connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command1);
+            DataTable data = new DataTable();
+            sqlDataAdapter.Fill(data);
+            dataGridView1.DataSource = data;
+            connection.Close();
+            dataGridView1.Columns[0].Width = 217;
+            dataGridView1.Columns[1].Width = 210;
+            dataGridView1.Columns[2].Width = 210;
+            dataGridView1.Columns[0].HeaderText = "Player Name";
+            dataGridView1.Columns[1].HeaderText = "Move";
+            dataGridView1.Columns[2].HeaderText = "Score";
+
+        }
+    }
+}
+
+ public partial class PuzzleImage : Form
+    {
+        public PuzzleImage()
+        {
+            InitializeComponent();
+        }
+
+        private void PuzzleImage_Load(object sender, EventArgs e)
+        {
+            if (Form1.imageUrl !=null)
+            {
+
+                pictureBox1.Image = System.Drawing.Image.FromFile(Form1.imageUrl);
+
+            }
+        }
+    }

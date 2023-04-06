@@ -80,6 +80,8 @@ namespace YazLabYabBoz
 
         }
 
+        //Kontrol butonlarını setleme
+
         public void setControlButtons()
         {
             for (int x = 17; x <= 32; x++)
@@ -94,6 +96,7 @@ namespace YazLabYabBoz
             }
         }
 
+        //Kontrol düğmelerini gizleme
         public void hideControlButtons()
         {
             if (!wrong)
@@ -107,6 +110,7 @@ namespace YazLabYabBoz
             }
         }
 
+        //Resmi karıştırarak doğru olan parçalar ait oldukları yerlere setlenirse karıştır butonunu dokunulmaz hale getirmektedir. Eğer doğru parça setlenmez ise tekrar resim seçme hakkı tanımaktadır. 
         private void btnMix(object sender, EventArgs e)  //Resmi karıştır butonu
         {
             resizedImage();
@@ -183,6 +187,8 @@ namespace YazLabYabBoz
             }
         }
 
+
+        //Fare aşağı düğümleri
         private void mouseDownButtons(object sender, EventArgs e)
         {
             var evsahibi_buton = ((System.Windows.Forms.Button)sender);
@@ -190,12 +196,14 @@ namespace YazLabYabBoz
             evsahibi_buton.DoDragDrop(evsahibi_buton, DragDropEffects.Move);
         }
 
+        //Sürükle Düğümleri
         void dragButtons(object sender, DragEventArgs e)
         {
             Console.WriteLine("Called: dragButtons");
             e.Effect = DragDropEffects.Move;
         }
 
+        //Sürükle ve bırak düğümleri
         void dragAndDropButtons(object sender, DragEventArgs e)
         {
             var gelen_buton = ((System.Windows.Forms.Button)e.Data.GetData(typeof(System.Windows.Forms.Button)));
@@ -222,7 +230,7 @@ namespace YazLabYabBoz
             }
 
 
-            // doğru yerde mi kontrol et, kayan kontrol
+            // doğru yerde mi kontrol
             var sonuc_2 = rightPlaceMethod(evsahibi_buton);
             var dogru_parca_no_2 = satir_bul(evsahibi_buton) * 4 + sutun_bul(evsahibi_buton) + 1;
             Console.WriteLine("Kayan Buton {0}, Doğru Parça Buton {1}", evsahibi_buton.Name, dogru_parca_no_2);
@@ -237,6 +245,7 @@ namespace YazLabYabBoz
             }
         }
 
+        //Image boyutunu ayarla.
         void resizedImage()
         {
             Console.WriteLine("Called: resizedImage()");
@@ -248,6 +257,8 @@ namespace YazLabYabBoz
             //pictureBox1.Image = mainPicture;
         }
 
+
+        //Düğme konumlarını ve boyularını ayarla
         void setButtonPositionandDimensions()
         {
             Console.WriteLine("Called: setButtonPositionandDimensions()");
@@ -266,6 +277,8 @@ namespace YazLabYabBoz
                 }
             }
         }
+
+        //En iyi skoru setle
         void setBestScore()
         {
             var list = System.IO.File.ReadLines(scoreFileAddress.ToString()).Select(line => double.Parse(line.Trim())).ToList();
@@ -280,11 +293,13 @@ namespace YazLabYabBoz
         }
 
 
+        //Oyuncuyu setle.
         void setPlayers()
         {
             var list = System.IO.File.ReadLines(playerAddress.ToString()).Select(line => Convert.ToString(line.Trim()));
         }
 
+        //Buton listesini setle
         void setButtonList()
         {
 
@@ -301,6 +316,7 @@ namespace YazLabYabBoz
         }
 
 
+        //Doğru yer methodu btn mix için
         bool rightPlaceMethod(Control button)
         {
             var parca_resim_indexi = satir_bul(button) * 4 + sutun_bul(button);
@@ -309,6 +325,7 @@ namespace YazLabYabBoz
             return sonuc;
         }
 
+        //Linkedlist 'e parçlararın setlenmesi ve doğru parçasnın bulunması.
         bool isRightPlace(Control buton, System.Drawing.Image image)
         {
             LinkedList<bool> sonuclar = new LinkedList<bool>();
