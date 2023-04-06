@@ -16,9 +16,7 @@ Oyunu Oynama Adımları ;<br><br>
 -> Karıştır butonuna tıklayarak ise resim parçaları en az bir doğru yere gelene kadar karıştırma işlemi yapılmaktadır.<br>
 -> Doğru parçayı bir yere yerleştirdiğinizde tekrardan o parça ile oynama yasaklanmıştır.<br>
 -> Bütün parçalar doğru yerleştiği taktirde Oyun Bitti mesajı verilmekte ve skorunuz bin klasörü içerisinde yer alan enYuksekSkor.txt belgesine hemde sunucuda ki veritabanına kayıt edilmektedir.<br><br>
-
-Örnek resim ; 
-<img src="images/proje.png" width="100" height="100">
+<img src="images/proje.png" width="1280" height="720">
 <br><br>
 
 Kullanılan Teknolojiler;<br><br>
