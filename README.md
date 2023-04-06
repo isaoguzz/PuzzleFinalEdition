@@ -1,7 +1,7 @@
 <h1>KARE PUZZLE OYUNU <h1>
 <br>
 <br>
-<h5>
+<h4>
 Projeyi çalıştırma adımları ;
 Projeyi çalıştırmak için yalnızca Visual Studio programı gereklidir.
 -> Öncelikle proje içerisinde ki metin belgelerinin yüklenmesi için dilediğiniz bir dosyada project adında bir klasör oluşturunuz. (İsimi değiştirmek istiyorsanız kod içerisinden değiştirebilirisiniz.)
@@ -48,4 +48,4 @@ Used technologies;
 -> ADO.NET is used for user registration.
 -> The server is kept in the Azure environment, so access to the database is provided from any environment.
 -> Linkedlist (linked list) data structure is used to ensure correct location control of puzzle pieces.
-<h5>
+</h4>
