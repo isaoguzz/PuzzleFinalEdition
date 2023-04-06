@@ -1,4 +1,4 @@
-<h1>KARE PUZZLE OYUNU <h1>
+<h1>KARE PUZZLE OYUNU </h1>
 <br>
 <br>
 <h4>
@@ -24,10 +24,11 @@ Kullanılan Teknolojiler;
 -> Puzzle parçalarının doğru yer kontrolünün sağlanması için Linkedlist (bağlı liste) veri yapısı kullanılmıştır.
 </h4>
 <hr>
+
+<h1>SQUARE PUZZLE GAME </h1>
+<br>
+<br>
 <h4>
-<h1>SQUARE PUZZLE GAME <h1>
-<br>
-<br>
 Steps to run the project;
 Only the Visual Studio program is required to run the project.
 -> First of all, create a folder named project in a file of your choice for uploading the text documents in the project. (If you want to change the name, you can change it in the code.)
