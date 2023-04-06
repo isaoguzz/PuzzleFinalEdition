@@ -22,9 +22,9 @@ Kullanılan Teknolojiler;
 -> Kullanıcı kayıt işlemleri için ADO.NET kullanılmıştır.
 -> Sunucu Azure ortamında tutulmuştur, bu sayede veri tabanına erişim her ortamdan sağlanılmıştır.
 -> Puzzle parçalarının doğru yer kontrolünün sağlanması için Linkedlist (bağlı liste) veri yapısı kullanılmıştır.
-
+</h4>
 <hr>
-
+<h4>
 <h1>SQUARE PUZZLE GAME <h1>
 <br>
 <br>
